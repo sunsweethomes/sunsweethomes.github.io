@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+#dictionary {
+  height: 70vh;
+  width: 100vw;
+}
+</style>
+<body>
+  <div id="enter">
+    <textarea id="words" style="display: block;">Mousse
+Reflexology
+Acutely
+Referral
+Appeasement
+Heresy
+Drudgery
+Transgressions
+Menorahs
+Incorrigibles
+Congealing
+Adzuki
+Perdition
+Prioress
+Adduced
+Transept
+Wiesbaden
+Condyles
+Quatrains
+Hawsers
+Confucianism
+Feinted
+Fortuitous
+Montmorency
+Quasimodo
+Bayreuth
+Chaucerian
+Allee
+Justaucorps
+Helvetia
+Firenze
+Bivouac
+Paschal
+Wattles
+Clouting
+Colleagues
+Contessa
+Alibi
+Juneteenth
+Triplicate
+Chaplain
+Herbalist
+Chelonia
+linsey-woolsey
+abalones
+bier
+refectory
+mien
+feinted
+Fortuitous
+covenant
+derrick
+conurbation
+resinous
+ziggurat
+Ah yes the epic words of spalling
+Chrysanthemum
+Accommodate
+Miscellaneous
+Psychology
+Sophomore
+Questionnaire
+Superintendent
+Flamboyant
+Acquaintance
+Colonel
+Benefited
+Boulevard
+Aberrant
+Poultice
+Assiduous
+Filibuster
+Tripartite
+Restaurateur
+Asseverate
+Zydeco
+Irrebuttable
+Irrefutable
+Raconteur
+Raconteur
+cabaret
+froufrou
+eschew
+ventricle
+inducement
+vanguard
+portrait
+tepidity
+meridian
+spontaneity
+platinum
+nonnegotiable
+disparate
+artifice
+cymbals
+nucleated
+exorbitant
+reparations
+constabulary
+speculate
+stratosphere
+noxious
+arbitrary
+quasar
+Podunk
+seize
+pathos
+equinox
+prosperous
+sclerosis
+ablaut
+anabolic
+jimberjawed
+toilsome
+tempestuous
+univocal
+avarice
+bouclé
+boucle
+thoroughbred
+potassium
+peculate
+treatise
+undergird
+oompah
+adulation
+minutia
+anticipatory
+chinook
+indigent
+merganser
+sternum
+par
+excellence
+thwartwise
+tae
+kwon
+do
+fenestrated
+lugubrious
+isosceles
+hoity-toity
+Mesopotamian
+Muzak
+vicinity
+merely
+abominable
+procedure
+limpid
+syllabus
+animus
+trillium
+Dalmatian
+ufology
+cholera
+minuscule
+jeepney
+volucrine
+populace
+vetiver
+parameters
+inflammable
+pyrotechnics
+mollify
+cohesive
+stigmata
+prolix
+mitochondria
+onomatopoeia
+lavender
+tensile
+gaudery
+luxuriate
+cavalcade
+gladiatorial
+machination
+pugnacious
+peruse
+alluvial
+epicurean
+derelict
+revelation
+arithmetic
+depredation
+ignominious
+auction
+assiduous
+diligence
+bodega
+bona
+fide
+gustatory
+obliterate
+legalese
+rudiments
+monitory
+equilibrium
+roustabout
+trifle
+ambrosial
+simultaneity
+gastronome
+epithet
+encroach
+acacia
+tetanus
+scarlatina
+ciao
+genome
+inviolable
+contrite
+patrician
+enervate
+turophile
+Patagonia
+vanquish
+ectoplasm
+olfactory
+en
+masse
+stroganoff
+procrastinate
+purification
+plantain
+aperture
+rhythmically
+dovecote
+bountiful
+pantheon
+marimba
+conduit
+bravado
+beneficent
+indict
+epitome
+annulment
+vegetarian
+surimi
+besmirch
+trespass
+commandeer
+bonsai
+university
+celestial
+preposterous
+extant
+cogently
+auricular
+settee
+legitimately
+inoculate
+heleoplankton
+pliant
+billiards
+obstreperous
+frabjous
+spiracle
+Formica
+Mylar
+rustication
+globular
+stellular
+akimbo
+derisive
+ineluctable
+eerily
+funambulist
+apotheosis
+entrée
+homeostasis
+calamari
+prehensile
+somatotype
+bizarro
+dissemble
+gallant
+intensify
+hurriedly
+corrosive
+afghan
+odontiasis
+stratification
+tomahawk
+artesian
+mendacious
+gubernatorial
+pungent
+mandril</textarea>
+
+    <button id="enter-words">Submit words</button>
+  </div>
+
+  <div id="spell" style="display: none;">
+    <span>Spell the word</span>
+
+    <button id="listen">Listen</button>
+    <button id="cancel">Cancel</button>
+    <input type="range" min="20" max="200" value="100" class="slider" id="speech-rate">
+
+    <div>
+      <input type="text" id="ans" placeholder="spelling">
+      <button id="check">Check</button>
+    </div>
+  </div>
+
+  <div id="result" style="display: none;">
+    <div id="is-correct">a</div>
+    <div id="correct-spelling">a</div>
+    <div id="your-spelling">a</div>
+    <button id="next-button">Onwards</button>
+
+    <br>
+    <iframe id="dictionary" src="" title="Dictionary"></iframe>
+  </div>
+
+  <button id="my-words">???</button>
+</body>
+<script>
+  let enterWords = document.getElementById("enter-words");
+  enterWords.onclick = () => {
+    submitWords();
+    advance();
+  };
+
+  let words = document.getElementById("words");
+  let wordsLeft = [];
+  let currWord = "";
+  let rateRange = document.getElementById("speech-rate");
+
+  let listen = document.getElementById("listen");
+  listen.onclick = () => {
+    if (!('speechSynthesis' in window))
+      alert("Sorry, your browser doesn't support text to speech!");
+    
+    let word = new SpeechSynthesisUtterance();
+    word.text = currWord;
+    word.rate = parseFloat(rateRange.value) / 200;
+    window.speechSynthesis.speak(word);
+  }
+
+  let cancel = document.getElementById("cancel");
+  cancel.onclick = () => {
+    window.speechSynthesis.cancel();
+  }
+
+  let ans = document.getElementById("ans");
+  let check = document.getElementById("check");
+
+  check.onclick = () => {
+    if (!wordsEqual(currWord, ans.value)) {
+      resultPrompt(false, currWord, ans.value);
+
+      wordsLeft.splice(getRandomInt(wordsLeft.length), 0, currWord);
+    } else {
+      resultPrompt(true, currWord, ans.value);
+    }
+  }
+
+  let next = document.getElementById("next-button");
+  next.onclick = () => {
+    advance();
+    
+    document.getElementById("result").style.display = "none";
+    document.getElementById("ans").value = "";
+  };
+
+  function getWords(text) {
+    return text.split(/\r?\n/);
+  }
+  
+  function submitWords() {
+    let enterDiv = document.getElementById("enter");
+    let spellDiv = document.getElementById("spell");
+    
+    enterDiv.style.display = "none";
+    spellDiv.style.display = "block";
+  }
+
+  function advance() {
+    if (wordsLeft.length === 0) {
+      wordsLeft = getWords(words.value);
+      wordsLeft.sort((a, b) => 0.5 - Math.random());
+      alert("repeating words");
+    }
+
+    currWord = wordsLeft.pop();
+    document.getElementById("dictionary").src = "https://www.merriam-webster.com/dictionary/" + currWord;
+  }
+
+  function wordsEqual(a, b) {
+    return a.toLowerCase().trim() === b.toLowerCase().trim();
+  }
+
+  function resultPrompt(isCorrect, correctSpelling, yourSpelling) {
+    let div = document.getElementById("result");
+
+    div.style.display = "block";
+
+    div.querySelector("#is-correct").innerHTML 
+      = isCorrect ? "Correct!" : "Incorrect.";
+    div.querySelector("#correct-spelling").innerHTML
+      = `Correct spelling: ${correctSpelling}`;
+    div.querySelector("#your-spelling").innerHTML 
+      = `Your spelling: ${yourSpelling}`;
+  }
+
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+
+  document.querySelector("#my-words").onclick = () => {
+    index = parseInt(window.prompt("what is your index? (0-based)"));
+    totalNums = parseInt(window.prompt("how many spellers? (1-based), include yourself"));
+
+    array = [
+    "wide",
+    "goods",
+    "tufts",
+    "same",
+    "cove",
+    "mask",
+    "gift",
+    "mess",
+    "drill",
+    "post",
+    "logs",
+    "upon",
+    "feet",
+    "sprung",
+    "plates",
+    "bread",
+    "loud",
+    "beak",
+    "foam",
+    "oil",
+    "also",
+    "spikes",
+    "smug",
+    "shelter",
+    "frankly",
+    "found",
+    "bonnet",
+    "camera",
+    "single",
+    "Texas",
+    "alas",
+    "embers",
+    "slumped",
+    "circus",
+    "imagined",
+    "part",
+    "nook",
+    "cold",
+    "much",
+    "thing",
+    "hike",
+    "very",
+    "left",
+    "meet",
+    "bent",
+    "hat",
+    "idea",
+    "must",
+    "zoomed",
+    "matching",
+    "clock",
+    "flapped",
+    "cog",
+    "clutch",
+    "gushed",
+    "floor",
+    "speech",
+    "rapids",
+    "creak",
+    "knot",
+    "gloves",
+    "rodeo",
+    "wrenches",
+    "polish",
+    "mumble",
+    "barrels",
+    "paddles",
+    "blurted",
+    "aware",
+    "reveal",
+    "mink",
+    "jelly",
+    "lane",
+    "deer",
+    "try",
+    "car",
+    "last",
+    "rush",
+    "lid",
+    "mice",
+    "swim",
+    "singing",
+    "turning",
+    "large",
+    "track",
+    "crusts",
+    "cell",
+    "poor",
+    "knife",
+    "china",
+    "frames",
+    "shoe",
+    "slide",
+    "gutter",
+    "search",
+    "pretty",
+    "salad",
+    "goggles",
+    "dolphin",
+    "direct",
+    "clerks",
+    "whiskers",
+    "wallet",
+    "mango",
+    "ached",
+    "tummy",
+    "slow",
+    "son",
+    "silk",
+    "duckling",
+    "rage",
+    "well",
+    "gone",
+    "lisp",
+    "rope",
+    "read",
+    "kites",
+    "wanted",
+    "closed",
+    "chart",
+    "pain",
+    "cheese",
+    "power",
+    "place",
+    "stopped",
+    "studied",
+    "prize",
+    "goals",
+    "booth",
+    "crouched",
+    "baskets",
+    "cousin",
+    "inflate",
+    "skiing",
+    "detail",
+    "forty",
+    "condition",
+    "focus",
+    "firmly",
+    "fabric",
+    "detour",
+    "teachers",
+    "gusto",
+    "scarf",
+    "shimmery",
+    "blindfolded",
+    "clobbered",
+    "rattled",
+    "throat",
+    "scuba",
+    "absent",
+    "savour",
+    "inclined",
+    "masthead",
+    "Leghorn",
+    "crockery",
+    "Neptune",
+    "lavished",
+    "nada",
+    "adorned",
+    "invasions",
+    "destination",
+    "scrawny",
+    "mulberry",
+    "weird",
+    "mutual",
+    "alibi",
+    "devious",
+    "flaxen",
+    "biome",
+    "cardigan",
+    "withered",
+    "Lincoln",
+    "tartan",
+    "wretched",
+    "expanse",
+    "contessa",
+    "wreaked",
+    "sudoku",
+    "exerts",
+    "reflexology",
+    "fetlocks",
+    "pulverized",
+    "impolite",
+    "ordinary",
+    "kitchen",
+    "surface",
+    "indent",
+    "basically",
+    "relative",
+    "indie",
+    "hull",
+    "trickster",
+    "texture",
+    "hedgehog",
+    "wardrobe",
+    "vibrant",
+    "shrine",
+    "gauze",
+    "notification",
+    "archduke",
+    "Juneteenth",
+    "loneliness",
+    "dedicated",
+    "ostriches",
+    "classified",
+    "surrounded",
+    "dependable",
+    "dormitories",
+    "orientation",
+    "sardine",
+    "triplicate",
+    "Wales",
+    "columns",
+    "cambric",
+    "granite",
+    "surveyed",
+    "contorted",
+    "chai",
+    "acutely",
+    "renowned",
+    "dutifully",
+    "arid",
+    "intentionally",
+    "ranchero",
+    "mystified",
+    "demeanour",
+    "squiggles",
+    "capture",
+    "cleat",
+    "Nile",
+    "sitcom",
+    "squints",
+    "cringed",
+    "eyesore",
+    "outright",
+    "glib",
+    "scuffle",
+    "stoats",
+    "revved",
+    "wizard",
+    "Jamestown",
+    "exception",
+    "ogre",
+    "dingoes",
+    "parsnips",
+    "caverns",
+    "symbol",
+    "grudgingly",
+    "telescope",
+    "associated",
+    "summit",
+    "tuxedo",
+    "inlaid",
+    "contraption",
+    "emboldened",
+    "Avalon",
+    "cubicle",
+    "hackles",
+    "radiation",
+    "emitting",
+    "charlotte",
+    "metropolis",
+    "granules",
+    "colleagues",
+    "mournful",
+    "deceptively",
+    "cocoon",
+    "intolerance",
+    "swankiest",
+    "mallet",
+    "disembodied",
+    "because",
+    "feline",
+    "bustling",
+    "scrolls",
+    "detect",
+    "smores",
+    "drone",
+    "playlist",
+    "squabbling",
+    "sneer",
+    "irregular",
+    "talons",
+    "dire",
+    "nudged",
+    "pineapple",
+    "cavity",
+    "simplicity",
+    "passersby",
+    "curtains",
+    "novice",
+    "reduce",
+    "canopy",
+    "fidgeting",
+    "furthermore",
+    "conkers",
+    "decimal",
+    "cobblestone",
+    "technique",
+    "Javas",
+    "corridor",
+    "interjected",
+    "faltered",
+    "wattles",
+    "preened",
+    "elation",
+    "mousse",
+    "pedestals",
+    "invigorating",
+    "professional",
+    "sustenance",
+    "motley",
+    "gluten",
+    "clouting",
+    "Singapore",
+    "Korea",
+    "morbidity",
+    "referral",
+    "stalemate",
+    "appeasement",
+    "instinctive",
+    "convictions",
+    "lineage",
+    "drudgery",
+    "heirloom",
+    "russet",
+    "heresy",
+    "dispensation",
+    "bantlings",
+    "padre",
+    "chaplain",
+    "herbalist",
+    "adduced",
+    "transept",
+    "mortification",
+    "aversion",
+    "vuvuzela",
+    "Wiesbaden",
+    "condyles",
+    "Chelonia",
+    "quatrains",
+    "hawsers",
+    "linseywoolsey",
+    "abalones",
+    "Confucianism",
+    "Mantua",
+    "Durham",
+    "bier",
+    "refectory",
+    "presidio",
+    "aisles",
+    "proctors",
+    "aerials",
+    "thoroughfare",
+    "liability",
+    "infectious",
+    "intestine",
+    "coaxing",
+    "ransacked",
+    "pallid",
+    "topologically",
+    "perdition",
+    "Richter",
+    "prioress",
+    "mien",
+    "feinted",
+    "fortuitous",
+    "impertinent",
+    "condescendingly",
+    "covenant",
+    "primordial",
+    "adzuki",
+    "Montmorency",
+    "Yom",
+    "Quasimodo",
+    "katabatic",
+    "Bayreuth",
+    "Albion",
+    "repast",
+    "Chaucerian",
+    "Jains",
+    "derrick",
+    "Des",
+    "conurbation",
+    "unsportsmanlike",
+    "trodden",
+    "surgeon",
+    "transgressions",
+    "penchant",
+    "Minnesota",
+    "discriminating",
+    "permanence",
+    "renal",
+    "kimchi",
+    "burgundy",
+    "scale",
+    "palpable",
+    "embroidery",
+    "resinous",
+    "humus",
+    "poultice",
+    "fractious",
+    "rhetorical",
+    "throes",
+    "moppet",
+    "allee",
+    "Kippur",
+    "Firenze",
+    "Helvetia",
+    "bivouac",
+    "vambrace",
+    "paschal",
+    "Bloomsbury",
+    "Edinburgh",
+    "ziggurat",
+    "Moines",
+    "Sioux",
+    "ensnarement",
+    "torturous",
+    "Judaism",
+    "abdomen",
+    "propensity",
+    "adversity",
+    "exile",
+    "larkspur",
+    "menorahs",
+    "mete",
+    "brocade",
+    "porcine",
+    "incorrigibles",
+    "coronation",
+    "scree",
+    "Cantonese",
+    "guarantor",
+    "Darwinism",
+    "phenomenal",
+    "semblance",
+    "assassinate",
+    "dorsay",
+    "ducats",
+    "justaucorps",
+    "lachrymose",
+    "fata",
+    "plastron",
+    "coracle",
+    "aquiline",
+    "Carlisle",
+    "Arapaho",
+    "Kerala",
+    ]
+    alert(array.filter((_, idx) => idx % (totalNums + index) === 0).join("\n"));
+  }
+</script>
+</html>

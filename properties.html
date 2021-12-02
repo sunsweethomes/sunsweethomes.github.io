@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Sun Sweet Homes</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="shortcut icon" type="image/jpg" href="sprites/favicon.png">
+    </head>
+
+    <body>
+        <header>
+            <nav class="menubar">
+                <div class="menu_elem"><a href="index.html" class="menu_nav"><img class="menu_logo" src="sprites/logo.png" alt="Home"></a></div>
+                <div class="menu_elem"><a href=form.html class="menu_nav">APPLICATION FORM</a></div>
+                <div class="menu_elem"><a href=contact.html class="menu_nav">CONTACT</a></div>
+                <div class="menu_elem"><a href=properties.html class="menu_nav">AVAILABLE PROPERTIES</a></div>
+            </nav>
+
+            <div class="title">
+                Available Properties
+            </div>
+        </header>
+
+        <main class="content flex properties">
+            <div id="modal">
+                <img id="close" src="sprites/x.png" alt="Close">
+                <div class="modal_spr_arrows_container">
+                    <img id="modal_spr">
+                    <img class="modal_arrows" id="modal_right_arrow" src="sprites/right_arrow.png" alt="Right arrow">
+                    <img class="modal_arrows" id="modal_left_arrow" src="sprites/left_arrow.png" alt="Left arrow">
+                </div>
+                <div id="modal_caption"></div>
+                <a id="modal_zillow" href=""
+                    target="_blank" rel="noopener noreferrer">View on Zillow</a>
+            </div>
+
+            <!-- <div class="modal_button">
+                <img class="property_spr" src="sprites/512_chasewood/pic0.jpg" alt="512 chasewood thumbnail">
+                <div class="modal_caption">
+                    <h2>$2000/month</h2>
+                    <div>3 bed | 2 bath | 1,757 sqft | 7,361 sqft lot</div>
+                    <div>512 Chasewood Drive, Grapevine, TX 76051</div>
+                    <p>
+                        In 2019 - new AC with Apex upgrade, new hot water heater, new disposal, new ceiling fans.
+                        Master bedroom has walk in shower and custom shelving in closet. Double garage has built
+                        in cabinets. Kitchen was upgraded to granite with a hardwood work area.
+                    </p>
+                    <a class="modal_zillow" href="https://www.zillow.com/homedetails/512-Chasewood-Dr-Grapevine-TX-76051/29232004_zpid/"></a>
+                </div>
+            </div> -->
+            <div class="modal_button">
+                <img class="property_spr" src="sprites/529_Norwood/pic0.jpg" alt="529 Norwood thumbnail">
+                <div class="modal_caption">
+                    <h2>$1650/month</h2>
+                    <div>3 bed | 1 bath | 1,650 sqft </div>
+                    <div>529 Norwood Drive, Hurst, TX 76053</div>
+                    <p>
+                        new hot water heater, new disposal, new ceiling fans.
+                        Master bedroom has walk in shower and custom shelving in closet. Kitchen was upgraded to granite with a hardwood work area.
+                    </p>
+                    <a class="modal_zillow" href="https://www.zillow.com"></a>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <nav>
+                <a href="privacy.html">Privacy Policy</a> | <a href="contact.html">Contact</a>
+            </nav>
+        </footer>
+
+        <script>
+            var modal_buttons = document.querySelectorAll(".modal_button");
+            var modal = document.getElementById("modal");
+            var modal_spr = document.getElementById("modal_spr");
+            var modal_caption = document.getElementById("modal_caption");
+            var modal_zillow = document.getElementById("modal_zillow");
+
+            modal_buttons.forEach(function (button) {
+                button.addEventListener("click", function(event) {
+                    modal.style.display = "flex";
+                    var property_spr = button.querySelector(".property_spr");
+                    modal_spr.src = property_spr.src;
+                    var caption = button.querySelector(".modal_caption");
+                    modal_caption.innerHTML = caption.innerHTML;
+                    var zillow = button.querySelector(".modal_zillow");
+                    modal_zillow.href = zillow.href;
+                    document.querySelector("body").style.overflow = "hidden";
+                });
+            });
+
+            var close = document.getElementById("close");
+            close.addEventListener("click", function(event) {
+                modal.style.display = "none";
+                document.querySelector("body").style.overflow = "auto";
+            });
+
+            var right_arrow = document.getElementById("modal_right_arrow");
+            var left_arrow = document.getElementById("modal_left_arrow");
+            right_arrow.addEventListener("click", function(event) {
+                var match = modal_spr.src.match(/([0-9]+)\.jpg/);
+                modal_spr.src = modal_spr.src.replace(/[0-9]+\.jpg/, ((parseInt(match[1]) + 1)).toString() + ".jpg");
+                modal_spr.addEventListener("error", function(event) {
+                    this.onerror = "null";
+                    this.src = this.src.replace(/[0-9]+\.jpg/, '0\.jpg');
+                });
+            });
+            left_arrow.addEventListener("click", function(event) {
+                var match = modal_spr.src.match(/([0-9]+)\.jpg/);
+                modal_spr.src = modal_spr.src.replace(/[0-9]+\.jpg/, ((parseInt(match[1]) - 1)).toString() + ".jpg");
+                modal_spr.addEventListener("error", function(event) {
+                    this.onerror = "null";
+                    this.src = this.src.replace(/\-[0-9]+\.jpg/, '0\.jpg');
+                });
+            });
+        </script>
+    </body>
+</html>

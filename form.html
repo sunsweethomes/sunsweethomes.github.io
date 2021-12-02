@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Sun Sweet Homes</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="shortcut icon" type="image/jpg" href="sprites/favicon.png">
+    </head>
+
+    <body>
+        <header>
+            <nav class="menubar">
+                <div class="menu_elem"><a href="index.html" class="menu_nav"><img class="menu_logo" src="sprites/logo.png" alt="Home"></a></div>
+                <div class="menu_elem"><a href=form.html class="menu_nav">APPLICATION FORM</a></div>
+                <div class="menu_elem"><a href=contact.html class="menu_nav">CONTACT</a></div>
+                <div class="menu_elem"><a href=properties.html class="menu_nav">AVAILABLE PROPERTIES</a></div>
+            </nav>
+
+            <div class="title">
+                Residential Lease Application
+            </div>
+        </header>
+
+        <main class="form_elements content">
+            
+            <form class="gform" method="POST" action="https://script.google.com/macros/s/AKfycbzzV7y5wGw0eIsmXeH11l5Q9mnecx5Y0kuG6ubhH3lH9ajfF2Az/exec">
+                <!-- Prevent implicit submission of the form on enter press-->
+                <button type="submit" disabled style="display: none" aria-hidden="true"></button>
+
+                <div class="form_group">
+                    <span class="form_meta">
+                        <div class="note">This form must be completed in one session. For secuity reasons, the form cannot be saved to complete later. You may download the <a href="form.pdf" target="_blank" rel="noopener noreferrer">pdf version of the application form</a> if you cannot fill the form out in one session.</div>
+                        <div><span style="color: red">*</span> = Required field</div>
+                        <div><strong>Each occupant and co-applicant 18 years or older must submit a seperate application</strong></div>
+                    </span>
+                    <div>
+                        <label for="property_address">Property address</label>
+                        <select name="property_address" id="property_address">
+                            <option selected disabled hidden>Select an option</option>
+                            <!-- <option value="611 bluebonnet">611 Bluebonnet Drive, Hurst, TX 76053</option> -->
+                            <option value="529 Norwood">529 Norwood Drive, Hurst, TX 76053</option>
+                            <!-- <option value="512 Chasewood">512 Chasewood, Grapevine, TX 76051</option> -->
+                        </select>
+                    </div>
+                    <div>
+                        <label for="move_in_date">Anticipated move in date</label>
+                        <input type=date name="move_in_date" id="move_in_date" min="">
+                    </div>
+                    <div>
+                        <label for="monthly_rent">Anticipated monthly rent ($)</label>
+                        <input type=number name="monthly_rent" id="monthly_rent" min=0>
+                    </div>
+                    <div>
+                        <label for="security_deposit">Anticipated security deposit ($)</label>
+                        <input type=number name="security_deposit" id="security_deposit" min=0>
+                    </div>
+                    <div>
+                        <label for="initial_lease_term">Initial lease term requested (months)</label>
+                        <input type=number name="initial_lease_term" id="initial_lease_term" min=12>
+                    </div>
+                    <div>
+                        <label for="property_condition" class="optional">
+                            Applicant requests Landlord consider the following repairs or 
+                            treatments should Applicant and Landlord enter into a lease
+                        </label>
+                        <textarea name="property_condition" id="property_condition" rows=3 class="optional"></textarea>
+                    </div>
+                    <!-- Referral information -->
+                    <div>
+                        <label for="referred_by">Applicant was referred to landlord by:</label>
+                        <select name="referred_by" id="referred_by">
+                            <option selected disabled hidden>Select an option</option>
+                            <option value="agent">Real estate agent</option>
+                            <option value="newspaper">Newspaper</option>
+                            <option value="sign">Sign</option>
+                            <option value="internet">Internet</option>
+                            <option value="other">Other</option>
+                        </select>
+
+                        <div id="agent_info">
+                            <div class="form_subtitle">Real estate agent</div>
+                            <div class="subtitled">
+                                <label for="agent_name" class="subtitle">Name</label>
+                                <input type="text" name="agent_name" id="agent_name">
+                            </div>
+                            <div class="subtitled">
+                                <label for="agent_phone" class="subtitle">Phone number</label>
+                                <input type="text" name="agent_phone" id="agent_phone">
+                            </div>
+                            <div class="subtitled">
+                                <label for="agent_email" class="subtitle">Email</label>
+                                <input type="text" name="agent_email" id="agent_email">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="is_co_applicant">Is there a co-applicant? <em><strong>
+                            If yes, co-applicant must submit a seperate application.</strong></em></label>
+                        <select name="is_co_applicant" id="is_co_applicant">
+                            <option selected disabled hidden>Select an option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <!-- Applicant info -->
+                    <div>
+                        <div class="form_subtitle">Applicant information</div>
+                        <div class="subtitled">
+                            <label for="applicant_name" class="subtitle">Name (first middle last)</label>
+                            <input type="text" name="applicant_name" id="applicant_name"
+                                placeholder="Jane Emily Doe">
+                        </div>
+                        <div class="subtitled">
+                            <label for="applicant_former_name" class="subtitle">Former last name (maiden or married)</label>
+                            <input type="text" name="applicant_former_name" id="applicant_former_name"
+                                placeholder="Jones">
+                        </div>
+                        <div class="subtitled">
+                            <label for="applicant_email" class="subtitle">Email</label>
+                            <input type="email" name="applicant_email" id="applicant_email"
+                                placeholder="JaneDough503@hotmail.com">
+                        </div>
+                        <div class="subtitled">
+                            <label for="applicant_home_phone" class="subtitle">Home phone</label>
+                            <input type="text" name="applicant_home_phone" id="applicant_home_phone"
+                                placeholder="+1 123-456-7890">
+                        </div>
+                        <div class="subtitled">
+                            <label for="applicant_work_phone" class="subtitle">Work phone</label>
+                            <input type="text" name="applicant_work_phone" id="applicant_work_phone"
+                                placeholder="+1 123-456-7890">
+                        </div>
+                        <div class="subtitled">
+                            <label for="driver_license_num" class="subtitle">Driver license number</label>
+                            <input type="text" name="driver_license_num" id="driver_license_num"
+                                placeholder="99999999">
+                        </div>
+                        <div class="subtitled">
+                            <div class="subtitle">Social security number</div>
+                            <input class="ssn" type="number" disabled placeholder="We will contact you to obtain SSN">
+                        </div>
+                        <div class="subtitled">
+                            <label for="birth_date" class="subtitle">Date of birth</label>
+                            <input type="date" name="birth_date" id="birth_date" max="">
+                        </div>
+                        <div class="subtitled">
+                            <label for="height" class="subtitle">Height (inch)</label>
+                            <input type="number" name="height" id="height" min=0 placeholder="62">
+                        </div>
+                        <div class="subtitled">
+                            <label for="eye_colour" class="subtitle">Eye colour</label>
+                            <select name="eye_colour" id="eye_colour">
+                                <option selected disabled hidden>Select an option</option>
+                                <option value="amber">Amber</option>
+                                <option value="blue">Blue</option>
+                                <option value="brown">Brown</option>
+                                <option value="grey">Grey</option>
+                                <option value="green">Green</option>
+                                <option value="hazel">Hazel</option>
+                                <option value="red">Red</option>
+                            </select>
+                        </div>
+                        <div class="subtitled">
+                            <label for="hair_colour" class="subtitle">Hair colour</label>
+                            <select name="hair_colour" id="hair_colour">
+                                <option selected disabled hidden>Select an option</option>
+                                <option value="blonde">Blonde</option>
+                                <option value="brunette">Brunette</option>
+                                <option value="red">Red</option>
+                                <option value="black">Black</option>
+                            </select>
+                        </div>
+                        <div class="subtitled">
+                            <label for="marital_status" class="subtitle">Marital status</label>
+                            <select name="marital_status" id="marital_status">
+                                <option selected disabled hidden>Select an option</option>
+                                <option value="divorced">Divorced</option>
+                                <option value="married">Married</option>
+                                <option value="seperated">Separated</option>
+                                <option value="single">Single</option>
+                                <option value="widowed">Widowed</option>
+                            </select>
+                        </div>
+                        <div class="subtitled">
+                            <label for="citizenship" class="subtitle">Citizenship (country)</label>
+                            <select id="citizenship" name="citizenship">
+                                <option selected disabled hidden>Select an option</option>
+                                <option value="Afghanistan">Afghanistan</option>
+                                <option value="Åland Islands">Åland Islands</option>
+                                <option value="Albania">Albania</option>
+                                <option value="Algeria">Algeria</option>
+                                <option value="American Samoa">American Samoa</option>
+                                <option value="Andorra">Andorra</option>
+                                <option value="Angola">Angola</option>
+                                <option value="Anguilla">Anguilla</option>
+                                <option value="Antarctica">Antarctica</option>
+                                <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                                <option value="Argentina">Argentina</option>
+                                <option value="Armenia">Armenia</option>
+                                <option value="Aruba">Aruba</option>
+                                <option value="Australia">Australia</option>
+                                <option value="Austria">Austria</option>
+                                <option value="Azerbaijan">Azerbaijan</option>
+                                <option value="Bahamas">Bahamas</option>
+                                <option value="Bahrain">Bahrain</option>
+                                <option value="Bangladesh">Bangladesh</option>
+                                <option value="Barbados">Barbados</option>
+                                <option value="Belarus">Belarus</option>
+                                <option value="Belgium">Belgium</option>
+                                <option value="Belize">Belize</option>
+                                <option value="Benin">Benin</option>
+                                <option value="Bermuda">Bermuda</option>
+                                <option value="Bhutan">Bhutan</option>
+                                <option value="Bolivia">Bolivia</option>
+                                <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                                <option value="Botswana">Botswana</option>
+                                <option value="Bouvet Island">Bouvet Island</option>
+                                <option value="Brazil">Brazil</option>
+                                <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
+                                <option value="Brunei Darussalam">Brunei Darussalam</option>
+                                <option value="Bulgaria">Bulgaria</option>
+                                <option value="Burkina Faso">Burkina Faso</option>
+                                <option value="Burundi">Burundi</option>
+                                <option value="Cambodia">Cambodia</option>
+                                <option value="Cameroon">Cameroon</option>
+                                <option value="Canada">Canada</option>
+                                <option value="Cape Verde">Cape Verde</option>
+                                <option value="Cayman Islands">Cayman Islands</option>
+                                <option value="Central African Republic">Central African Republic</option>
+                                <option value="Chad">Chad</option>
+                                <option value="Chile">Chile</option>
+                                <option value="China">China</option>
+                                <option value="Christmas Island">Christmas Island</option>
+                                <option value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option>
+                                <option value="Colombia">Colombia</option>
+                                <option value="Comoros">Comoros</option>
+                                <option value="Congo">Congo</option>
+                                <option value="Congo, The Democratic Republic of The">Congo, The Democratic Republic of The</option>
+                                <option value="Cook Islands">Cook Islands</option>
+                                <option value="Costa Rica">Costa Rica</option>
+                                <option value="Cote D'ivoire">Cote D'ivoire</option>
+                                <option value="Croatia">Croatia</option>
+                                <option value="Cuba">Cuba</option>
+                                <option value="Cyprus">Cyprus</option>
+                                <option value="Czech Republic">Czech Republic</option>
+                                <option value="Denmark">Denmark</option>
+                                <option value="Djibouti">Djibouti</option>
+                                <option value="Dominica">Dominica</option>
+                                <option value="Dominican Republic">Dominican Republic</option>
+                                <option value="Ecuador">Ecuador</option>
+                                <option value="Egypt">Egypt</option>
+                                <option value="El Salvador">El Salvador</option>
+                                <option value="Equatorial Guinea">Equatorial Guinea</option>
+                                <option value="Eritrea">Eritrea</option>
+                                <option value="Estonia">Estonia</option>
+                                <option value="Ethiopia">Ethiopia</option>
+                                <option value="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)</option>
+                                <option value="Faroe Islands">Faroe Islands</option>
+                                <option value="Fiji">Fiji</option>
+                                <option value="Finland">Finland</option>
+                                <option value="France">France</option>
+                                <option value="French Guiana">French Guiana</option>
+                                <option value="French Polynesia">French Polynesia</option>
+                                <option value="French Southern Territories">French Southern Territories</option>
+                                <option value="Gabon">Gabon</option>
+                                <option value="Gambia">Gambia</option>
+                                <option value="Georgia">Georgia</option>
+                                <option value="Germany">Germany</option>
+                                <option value="Ghana">Ghana</option>
+                                <option value="Gibraltar">Gibraltar</option>
+                                <option value="Greece">Greece</option>
+                                <option value="Greenland">Greenland</option>
+                                <option value="Grenada">Grenada</option>
+                                <option value="Guadeloupe">Guadeloupe</option>
+                                <option value="Guam">Guam</option>
+                                <option value="Guatemala">Guatemala</option>
+                                <option value="Guernsey">Guernsey</option>
+                                <option value="Guinea">Guinea</option>
+                                <option value="Guinea-bissau">Guinea-bissau</option>
+                                <option value="Guyana">Guyana</option>
+                                <option value="Haiti">Haiti</option>
+                                <option value="Heard Island and Mcdonald Islands">Heard Island and Mcdonald Islands</option>
+                                <option value="Holy See (Vatican City State)">Holy See (Vatican City State)</option>
+                                <option value="Honduras">Honduras</option>
+                                <option value="Hong Kong">Hong Kong</option>
+                                <option value="Hungary">Hungary</option>
+                                <option value="Iceland">Iceland</option>
+                                <option value="India">India</option>
+                                <option value="Indonesia">Indonesia</option>
+                                <option value="Iran, Islamic Republic of">Iran, Islamic Republic of</option>
+                                <option value="Iraq">Iraq</option>
+                                <option value="Ireland">Ireland</option>
+                                <option value="Isle of Man">Isle of Man</option>
+                                <option value="Israel">Israel</option>
+                                <option value="Italy">Italy</option>
+                                <option value="Jamaica">Jamaica</option>
+                                <option value="Japan">Japan</option>
+                                <option value="Jersey">Jersey</option>
+                                <option value="Jordan">Jordan</option>
+                                <option value="Kazakhstan">Kazakhstan</option>
+                                <option value="Kenya">Kenya</option>
+                                <option value="Kiribati">Kiribati</option>
+                                <option value="Korea, Democratic People's Republic of">Korea, Democratic People's Republic of</option>
+                                <option value="Korea, Republic of">Korea, Republic of</option>
+                                <option value="Kuwait">Kuwait</option>
+                                <option value="Kyrgyzstan">Kyrgyzstan</option>
+                                <option value="Lao People's Democratic Republic">Lao People's Democratic Republic</option>
+                                <option value="Latvia">Latvia</option>
+                                <option value="Lebanon">Lebanon</option>
+                                <option value="Lesotho">Lesotho</option>
+                                <option value="Liberia">Liberia</option>
+                                <option value="Libyan Arab Jamahiriya">Libyan Arab Jamahiriya</option>
+                                <option value="Liechtenstein">Liechtenstein</option>
+                                <option value="Lithuania">Lithuania</option>
+                                <option value="Luxembourg">Luxembourg</option>
+                                <option value="Macao">Macao</option>
+                                <option value="Macedonia, The Former Yugoslav Republic of">Macedonia, The Former Yugoslav Republic of</option>
+                                <option value="Madagascar">Madagascar</option>
+                                <option value="Malawi">Malawi</option>
+                                <option value="Malaysia">Malaysia</option>
+                                <option value="Maldives">Maldives</option>
+                                <option value="Mali">Mali</option>
+                                <option value="Malta">Malta</option>
+                                <option value="Marshall Islands">Marshall Islands</option>
+                                <option value="Martinique">Martinique</option>
+                                <option value="Mauritania">Mauritania</option>
+                                <option value="Mauritius">Mauritius</option>
+                                <option value="Mayotte">Mayotte</option>
+                                <option value="Mexico">Mexico</option>
+                                <option value="Micronesia, Federated States of">Micronesia, Federated States of</option>
+                                <option value="Moldova, Republic of">Moldova, Republic of</option>
+                                <option value="Monaco">Monaco</option>
+                                <option value="Mongolia">Mongolia</option>
+                                <option value="Montenegro">Montenegro</option>
+                                <option value="Montserrat">Montserrat</option>
+                                <option value="Morocco">Morocco</option>
+                                <option value="Mozambique">Mozambique</option>
+                                <option value="Myanmar">Myanmar</option>
+                                <option value="Namibia">Namibia</option>
+                                <option value="Nauru">Nauru</option>
+                                <option value="Nepal">Nepal</option>
+                                <option value="Netherlands">Netherlands</option>
+                                <option value="Netherlands Antilles">Netherlands Antilles</option>
+                                <option value="New Caledonia">New Caledonia</option>
+                                <option value="New Zealand">New Zealand</option>
+                                <option value="Nicaragua">Nicaragua</option>
+                                <option value="Niger">Niger</option>
+                                <option value="Nigeria">Nigeria</option>
+                                <option value="Niue">Niue</option>
+                                <option value="Norfolk Island">Norfolk Island</option>
+                                <option value="Northern Mariana Islands">Northern Mariana Islands</option>
+                                <option value="Norway">Norway</option>
+                                <option value="Oman">Oman</option>
+                                <option value="Pakistan">Pakistan</option>
+                                <option value="Palau">Palau</option>
+                                <option value="Palestinian Territory, Occupied">Palestinian Territory, Occupied</option>
+                                <option value="Panama">Panama</option>
+                                <option value="Papua New Guinea">Papua New Guinea</option>
+                                <option value="Paraguay">Paraguay</option>
+                                <option value="Peru">Peru</option>
+                                <option value="Philippines">Philippines</option>
+                                <option value="Pitcairn">Pitcairn</option>
+                                <option value="Poland">Poland</option>
+                                <option value="Portugal">Portugal</option>
+                                <option value="Puerto Rico">Puerto Rico</option>
+                                <option value="Qatar">Qatar</option>
+                                <option value="Reunion">Reunion</option>
+                                <option value="Romania">Romania</option>
+                                <option value="Russian Federation">Russian Federation</option>
+                                <option value="Rwanda">Rwanda</option>
+                                <option value="Saint Helena">Saint Helena</option>
+                                <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+                                <option value="Saint Lucia">Saint Lucia</option>
+                                <option value="Saint Pierre and Miquelon">Saint Pierre and Miquelon</option>
+                                <option value="Saint Vincent and The Grenadines">Saint Vincent and The Grenadines</option>
+                                <option value="Samoa">Samoa</option>
+                                <option value="San Marino">San Marino</option>
+                                <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+                                <option value="Saudi Arabia">Saudi Arabia</option>
+                                <option value="Senegal">Senegal</option>
+                                <option value="Serbia">Serbia</option>
+                                <option value="Seychelles">Seychelles</option>
+                                <option value="Sierra Leone">Sierra Leone</option>
+                                <option value="Singapore">Singapore</option>
+                                <option value="Slovakia">Slovakia</option>
+                                <option value="Slovenia">Slovenia</option>
+                                <option value="Solomon Islands">Solomon Islands</option>
+                                <option value="Somalia">Somalia</option>
+                                <option value="South Africa">South Africa</option>
+                                <option value="South Georgia and The South Sandwich Islands">South Georgia and The South Sandwich Islands</option>
+                                <option value="Spain">Spain</option>
+                                <option value="Sri Lanka">Sri Lanka</option>
+                                <option value="Sudan">Sudan</option>
+                                <option value="Suriname">Suriname</option>
+                                <option value="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
+                                <option value="Swaziland">Swaziland</option>
+                                <option value="Sweden">Sweden</option>
+                                <option value="Switzerland">Switzerland</option>
+                                <option value="Syrian Arab Republic">Syrian Arab Republic</option>
+                                <option value="Taiwan">Taiwan</option>
+                                <option value="Tajikistan">Tajikistan</option>
+                                <option value="Tanzania, United Republic of">Tanzania, United Republic of</option>
+                                <option value="Thailand">Thailand</option>
+                                <option value="Timor-leste">Timor-leste</option>
+                                <option value="Togo">Togo</option>
+                                <option value="Tokelau">Tokelau</option>
+                                <option value="Tonga">Tonga</option>
+                                <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+                                <option value="Tunisia">Tunisia</option>
+                                <option value="Turkey">Turkey</option>
+                                <option value="Turkmenistan">Turkmenistan</option>
+                                <option value="Turks and Caicos Islands">Turks and Caicos Islands</option>
+                                <option value="Tuvalu">Tuvalu</option>
+                                <option value="Uganda">Uganda</option>
+                                <option value="Ukraine">Ukraine</option>
+                                <option value="United Arab Emirates">United Arab Emirates</option>
+                                <option value="United Kingdom">United Kingdom</option>
+                                <option value="United States">United States</option>
+                                <option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
+                                <option value="Uruguay">Uruguay</option>
+                                <option value="Uzbekistan">Uzbekistan</option>
+                                <option value="Vanuatu">Vanuatu</option>
+                                <option value="Venezuela">Venezuela</option>
+                                <option value="Viet Nam">Viet Nam</option>
+                                <option value="Virgin Islands, British">Virgin Islands, British</option>
+                                <option value="Virgin Islands, U.S.">Virgin Islands, U.S.</option>
+                                <option value="Wallis and Futuna">Wallis and Futuna</option>
+                                <option value="Western Sahara">Western Sahara</option>
+                                <option value="Yemen">Yemen</option>
+                                <option value="Zambia">Zambia</option>
+                                <option value="Zimbabwe">Zimbabwe</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Emergency contact -->
+                    <div>
+                        <div class="form_subtitle">Emergency contact information</div>
+                        <div class="note">Do not enter the information of an occupant or co-applicant</div>
+                        <div class="subtitled">
+                            <label for="emergency_name" class="subtitle">Name</label>
+                            <input type="text" name="emergency_name" id="emergency_name">
+                        </div>
+                        <div class="subtitled">
+                            <label for="emergency_address" class="subtitle">Address</label>
+                            <input type="text" name="emergency_address" id="emergency_address">
+                        </div>
+                        <div class="subtitled">
+                            <label for="emergency_phone" class="subtitle">Phone number</label>
+                            <input type="text" name="emergency_phone" id="emergency_phone">
+                        </div>
+                        <div class="subtitled">
+                            <label for="emergency_email" class="subtitle">Emergency contact email</label>
+                            <input type="text" name="emergency_email" id="emergency_email">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form_subtitle">List other persons who will be occupying this property</div>
+                        <div id="other_persons_parent">
+                            <div class="other_persons_clone">
+                                <div class="subtitled">
+                                    <label for="other_person_name1" class="subtitle">Name</label>
+                                    <input type="text" name="other_person1" id="other_person_name1">
+                                </div>
+                                <div class="subtitled">
+                                    <label for="other_person_status1" class="subtitle">Marital status</label>
+                                    <select name="other_person1" id="other_person_status1">
+                                        <option selected disabled hidden>Select an option</option>
+                                        <option value="divorced">Divorced</option>
+                                        <option value="married">Married</option>
+                                        <option value="seperated">Separated</option>
+                                        <option value="single">Single</option>
+                                        <option value="widowed">Widowed</option>
+                                    </select>
+                                </div>
+                                <div class="subtitled">
+                                    <label for="other_person_age1" class="subtitle">Age</label>
+                                    <input type="number" name="other_person1" id="other_person_age1" min="0">
+                                </div>
+                            </div>
+                        </div>
+                        <button id="other_persons_clone_button">Add another person</button>
+                        <button id="other_persons_delete_button">Remove a person</button>
+                    </div>
+                    <div>
+                        <div class="form_subtitle">Applicant's current address</div>
+                        <div class="subtitled">
+                            <label for="applicant_address" class="subtitle">Address</label>
+                            <input type="text" name="applicant_address" id="applicant_address">
+                        </div>
+                        <div class="subtitled">
+                            <label for="applicant_apt_n" class="subtitle optional">Apartment no.</label>
+                            <input type="number" name="applicant_apt_n" id="applicant_apt_n" class="optional">
+                        </div>
+                        <div class="subtitled">
+                            <label for="applicant_city" class="subtitle">City</label>
+                            <input type="text" name="applicant_city" id="applicant_city">
+                        </div>
+                        <div class="subtitled">
+                            <label for="applicant_zip" class="subtitle">Zip code</label>
+                            <input type="number" name="applicant_zip" id="applicant_zip">
+                        </div>
+                    </div>
+
+                    <!--------------------->
+
+                    <div>
+                        <div class="form_subtitle">Applicant's current employer</div>
+                        <div class="subtitled">
+                            <label for="applicant_employer" class="subtitle">Name</label>
+                            <input type="text" name="applicant_employer" id="applicant_employer">
+                        </div>
+                        <div class="subtitled">
+                            <label for="applicant_employer_address" class="subtitle">Address</label>
+                            <input type="text" name="applicant_employer_address" id="applicant_employer_address">
+                        </div>
+                        <div class="subtitled">
+                            <label for="applicant_employer_city" class="subtitle">City</label>
+                            <input type="text" name="applicant_employer_city" id="applicant_employer_city">
+                        </div>
+                        <div class="subtitled">
+                            <label for="applicant_employer_zip" class="subtitle">Zip code</label>
+                            <input type="number" name="applicant_employer_zip" id="applicant_employer_zip">
+                        </div>
+                        <div class="subtitled">
+                            <label for="applicant_supervisor" class="subtitle">Supervisor name</label>
+                            <input type="text" name="applicant_supervisor" id="applicant_supervisor">
+                        </div>
+                        <div class="subtitled">
+                            <label for="applicant_supervisor_phone" class="subtitle">Supervisor phone</label>
+                            <input type="text" name="applicant_supervisor_phone" id="applicant_supervisor_phone">
+                        </div>
+                        <div class="subtitled">
+                            <label for="applicant_supervisor_email" class="subtitle">Supervisor email</label>
+                            <input type="text" name="applicant_supervisor_email" id="applicant_supervisor_email">
+                        </div>
+                        <div class="subtitled">
+                            <label for="applicant_employer_start" class="subtitle">Start date</label>
+                            <input type="date" name="applicant_employer_start" id="applicant_employer_start">
+                        </div>
+                        <div class="subtitled">
+                            <label for="applicant_income" class="subtitle">Gross monthly income ($)</label>
+                            <input type="number" name="applicant_income" id="applicant_income">
+                        </div>
+                        <div class="subtitled">
+                            <label for="applicant_position" class="subtitle">Position</label>
+                            <input type="text" name="applicant_possition" id="applicant_position">
+                        </div>
+                        <div class="note">
+                            Note: If Applicant is self-employed, Landlord may require one or
+                            more previous year's tax return attested by a CPA, attorney, or
+                            other tax professional.
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form_subtitle">Applicant's previous employer</div>
+                        <div class="subtitled">
+                            <label for="applicant_prev_employer" class="subtitle">Name</label>
+                            <input type="text" name="applicant_prev_employer" id="applicant_prev_employer">
+                        </div>
+                        <div class="subtitled">
+                            <label for="applicant_prev_employer_address" class="subtitle">Address</label>
+                            <input type="text" name="applicant_prev_employer_address" id="applicant_prev_employer_address">
+                        </div>
+                        <div class="subtitled">
+                            <label for="applicant_prev_employer_city" class="subtitle">City</label>
+                            <input type="text" name="applicant_prev_employer_city" id="applicant_prev_employer_city">
+                        </div>
+                        <div class="subtitled">
+                            <label for="applicant_prev_employer_zip" class="subtitle">Zip code</label>
+                            <input type="number" name="applicant_prev_employer_zip" id="applicant_prev_employer_zip">
+                        </div>
+                        <div class="subtitled">
+                            <label for="applicant_prev_supervisor" class="subtitle">Supervisor name</label>
+                            <input type="text" name="applicant_prev_supervisor" id="applicant_prev_supervisor">
+                        </div>
+                        <div class="subtitled">
+                            <label for="applicant_prev_supervisor_phone" class="subtitle">Supervisor phone</label>
+                            <input type="text" name="applicant_prev_supervisor_phone" id="applicant_prev_supervisor_phone">
+                        </div>
+                        <div class="subtitled">
+                            <label for="applicant_prev_supervisor_email" class="subtitle">Supervisor email</label>
+                            <input type="text" name="applicant_prev_supervisor_email" id="applicant_prev_supervisor_email">
+                        </div>
+                        <div class="subtitled">
+                            <label for="applicant_prev_income" class="subtitle">Gross monthly income ($)</label>
+                            <input type="number" name="applicant_prev_income" id="applicant_prev_income">
+                        </div>
+                        <div class="subtitled">
+                            <label for="applicant_prev_position" class="subtitle">Position</label>
+                            <input type="text" name="applicant_prev_position" id="applicant_prev_position">
+                        </div>
+                        <div class="subtitled">
+                            <label for="applicant_prev_start" class="subtitle">Start date</label>
+                            <input type="date" name="applicant_prev_start" id="applicant_prev_start">
+                        </div>
+                        <div class="subtitled">
+                            <label for="applicant_prev_end" class="subtitle">End date</label>
+                            <input type="date" name="applicant_prev_end" id="applicant_prev_end">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="other_income" class="optional">Describe other income Applicant wants considered</label>
+                        <textarea name="other_income" id="other_income" rows="3" class="optional"></textarea>
+                    </div>
+                    <div>
+                        <div class="form_subtitle">List all vehicles to be parked on the Property</div>
+                        <div id="vehicles_parent">
+                            <div class="vehicles_clone">
+                                <div class="subtitled">
+                                    <label for="vehicle_type1" class="subtitle">Type</label>
+                                    <select name="vehicle1" id="vehicle_type1">
+                                        <option selected disabled hidden>Select an option</option>
+                                        <option value="sedan">Sedan</option>
+                                        <option value="coupe">Coupe</option>
+                                        <option value="sport">Sports car</option>
+                                        <option value="hatchback">Hatchback</option>
+                                        <option value="suv">SUV</option>
+                                        <option value="minivan">Minivan</option>
+                                        <option value="truck">Pickup truck</option>
+                                    </select>
+                                </div>
+                                <div class="subtitled">
+                                    <label for="vehicle_year1" class="subtitle">Year</label>
+                                    <input type="number" name="vehicle1" id="vehicle_year1">
+                                </div>
+                                <div class="subtitled">
+                                    <label for="vehicle_make1" class="subtitle">Make</label>
+                                    <input type="text" name="vehicle1" id="vehicle_make1">
+                                </div>
+                                <div class="subtitled">
+                                    <label for="vehicle_model1" class="subtitle">Model</label>
+                                    <input type="text" name="vehicle1" id="vehicle_model1">
+                                </div>
+                                <div class="subtitled">
+                                    <label for="vehicle_plate1" class="subtitle">License plate no.</label>
+                                    <input type="text" name="vehicle1" id="vehicle_plate1">
+                                </div>
+                                <div class="subtitled">
+                                    <label for="vehicle_state1" class="subtitle">State</label>
+                                    <input type="text" name="vehicle1" id="vehicle_state1">
+                                </div>
+                                <div class="subtitled">
+                                    <label for="vehicle_pay1" class="subtitle">Monthly payment</label>
+                                    <input type="number" name="vehicle1" id="vehicle_pay1">
+                                </div>
+                            </div>
+                        </div>
+                        <button id="vehicles_clone_button">Add another vehicle</button>
+                        <button id="vehicles_delete_button">Remove a vehicle</button>
+                    </div>
+                    <div>
+                        <label for="is_pets">
+                            Will any pets (dogs, cats, birds, reptiles, fish, 
+                            and other pets be kept on the Property?
+                        </label>
+                        <select name="is_pets" id="is_pets">
+                            <option selected disabled hidden>Select an option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                        <div id="pets">
+                            <div class="form_subtitle">List all pets to be kept on the Property</div>
+                            <div id="pets_parent">
+                                <div class="pets_clone">
+                                    <div class="subtitled">
+                                        <label for="pets_type1" class="subtitle">Type</label>
+                                        <input type="text" name="pets1" id="pets_type1">
+                                    </div>
+                                    <div class="subtitled">
+                                        <label for="pets_breed1" class="subtitle">Breed</label>
+                                        <input type="text" name="pets1" id="pets_breed1">
+                                    </div>
+                                    <div class="subtitled">
+                                        <label for="pets_weight1" class="subtitle">Weight (lb)</label>
+                                        <input type="number" name="pets1" id="pets_weight1">
+                                    </div>
+                                    <div class="subtitled">
+                                        <label for="pets_age1" class="subtitle">Age (years)</label>
+                                        <input type="number" name="pets1" id="pets_age1">
+                                    </div>
+                                    <div class="subtitled">
+                                        <label for="pets_gender1" class="subtitle">Gender</label>
+                                        <select name="pets1" id="pets_gender1">
+                                            <option selected disabled hidden>Select an option</option>
+                                            <option value="female">Female</option>
+                                            <option value="male">Male</option>
+                                        </select>
+                                    </div>
+                                    <div class="subtitled">
+                                        <label for="pets_neutered1" class="subtitle">Neutered?</label>
+                                        <select name="pets1" id="pets_neutered1">
+                                            <option selected disabled hidden>Select an option</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="subtitled">
+                                        <label for="pets_declawed1" class="subtitle">Declawed?</label>
+                                        <select name="pets1" id="pets_declawed1">
+                                            <option selected disabled hidden>Select an option</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="subtitled">
+                                        <label for="pets_shots1" class="subtitle">Rabies shots current?</label>
+                                        <select name="pets1" id="pets_shots1">
+                                            <option selected disabled hidden>Select an option</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="subtitled">
+                                        <label for="pets_bite1" class="subtitle">Bite history?</label>
+                                        <select name="pets1" id="pets_bite1">
+                                            <option selected disabled hidden>Select an option</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="pets_clone_button">Add another pet</button>
+                            <button id="pets_delete_button">Remove a pet</button>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="water_furn">Will any waterbeds or water-filled furniture be on the Property?</label>
+                        <select name="water_furn" id="water_furn">
+                            <option selected disabled hidden>Select an option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="smoke">Does anyone who will occupy the Property smoke?</label>
+                        <select name="smoke" id="smoke">
+                            <option selected disabled hidden>Select an option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="insurance">Will Applicant maintain renter's insurance?</label>
+                        <select name="insurance" id="insurance">
+                            <option selected disabled hidden>Select an option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="is_military">Is Applicant or Applicant's spouse, even if separated, in military?</label>
+                        <select name="is_military" id="is_military">
+                            <option selected disabled hidden>Select an option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div id="is_military_limit_vis">
+                        <label for="is_military_limit">
+                            Is the military person serving under orders limiting the military person's
+                            stay to one year or less?
+                        </label>
+                        <select name="is_military_limit" id="is_military_limit">
+                            <option selected disabled hidden>Select an option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div>
+                        <div class="form_subtitle">Has Applicant ever:</div>
+                        <div class="subtitled">
+                            <label for="evicted" class="subtitle">been evicted?</label>
+                            <select name="evicted" id="evicted">
+                                <option selected disabled hidden>Select an option</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="subtitled">
+                            <label for="ask_move_out" class="subtitle">been asked to move out by a landlord?</label>
+                            <select name="ask_move_out" id="ask_move_out">
+                                <option selected disabled hidden>Select an option</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="subtitled">
+                            <label for="breached_lease" class="subtitle">breached a lease or rental agreement?</label>
+                            <select name="breached_lease" id="breached_lease">
+                                <option selected disabled hidden>Select an option</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="subtitled">
+                            <label for="bankrupt" class="subtitle">filed for bankruptcy?</label>
+                            <select name="bankrupt" id="bankrupt">
+                                <option selected disabled hidden>Select an option</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="subtitled">
+                            <label for="lost_property_foreclosure" class="subtitle">lost property in a forclosure?</label>
+                            <select name="lost_property_foreclosure" id="lost_property_foreclosure">
+                                <option selected disabled hidden>Select an option</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="subtitled">
+                            <label for="credit_problems" class="subtitle">
+                                had <strong><em>any</em></strong> credit problems, including any outstanding debt
+                                (e.g. student loans or medical bills), slow-pays, or delinquencies?
+                            </label>
+                            <select name="credit_problems" id="credit_problems">
+                                <option selected disabled hidden>Select an option</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="subtitled">
+                            <label for="convicted_crime" class="subtitle">been convicted of a crime?</label>
+                            <select name="convicted_crime" id="convicted_crime">
+                                <option selected disabled hidden>Select an option</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div id="crime_details">
+                            <div class="subtitled">
+                                <label for="crime_location" class="subtitle">Crime location</label>
+                                <input type="text" name="crime_location" id="crime_location">
+                            </div>
+                            <div class="subtitled">
+                                <label for="crime_year" class="subtitle">Crime year</label>
+                                <input type="number" name="crime_year" id="crime_year">
+                            </div>
+                            <div class="subtitled">
+                                <label for="crime_type" class="subtitle">Crime type</label>
+                                <input type="text" name="crime_type" id="crime_type">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="sex_offender">Is any occupant a registered sex offender?</label>
+                        <select name="sex_offender" id="sex_offender">
+                            <option selected disabled hidden>Select an option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div id="sex_offense_details">
+                        <div class="form_subtitle">Sex offender conviction</div>
+                        <div class="subtitled">
+                            <label for="sex_location" class="subtitle">Location</label>
+                            <input type="text" name="sex_location" id="sex_location">
+                        </div>
+                        <div class="subtitled">
+                            <label for="sex_year" class="subtitle">Year</label>
+                            <input type="number" name="sex_year" id="sex_year">
+                        </div>
+                        <div class="subtitled">
+                            <label for="sex_type" class="subtitle">Type</label>
+                            <input type="text" name="sex_type" id="sex_type">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="comments" class="optional">Additional comments</label>
+                        <textarea name="comments" id="comments" rows=3 class="optional"></textarea>
+                    </div>
+                    <div class="acknowledgement_header">Acknowledgement, Authorization and Representation</div>
+                    <div class="acknowledgement_container">
+                        <p>
+                            <strong>Authorization:</strong> 
+                            Applicant authorizes Landlord and Landlord's agent, at any time before, during, 
+                            or after any tenancy, to:
+                            <ol>
+                                <li class="acknowledgement_">obtain a copy of Applicant's credit report;</li>
+                                <li>obtain a criminal background check related to Applicant and any occupant; and</li>
+                                <li>verify any rental or employment history or verify any other information related 
+                                    to this application with persons knowledgeable of such information.</li>
+                            </ol>
+                        </p>
+                        <p>
+                            <strong>Notice of Landlord's Right to Continue to Show the Property:</strong>
+                            Unless Landlord and Applicant enter into a separate written agreement otherwise, the 
+                            Property remains on the market until a lease is signed by all parties and Landlord may
+                            continue to show the Property to other prospective tenants and accept another offer.
+                        </p>
+                        <p>
+                            <strong>Privacy Policy:</strong>
+                            Landlord's agent or property manager maintains a privacy policy that is available upon 
+                            request.
+                        </p>
+                        <p><u>
+                            <strong>Fees:</strong>
+                            Applicant submits a non-refundable fee of $50 to Houhua Sun for processing and 
+                            reviewing this application. Landlord will request fee through electronic transfer 
+                            system.
+                        </p></u>
+                        <p>
+                            <strong>Acknowledgement & Representation:</strong>
+                            <ol>
+                                <li>
+                                    Signing this application indicates that Applicant has had the opportunity 
+                                    to review Landlord's tenant selection criteria, which is available upon 
+                                    request. The tenant selection criteria may include factors such as criminal 
+                                    history, credit history, current income and rental history.
+                                </li>
+                                <li>
+                                    Applicant understands that providing inaccurate or incomplete information 
+                                    is grounds for rejection of this application and forfeiture of any 
+                                    application fee and may be grounds to declare Applicant in breach of any 
+                                    lease the Applicant may sign.
+                                </li>
+                                <li>
+                                    Applicant represents that the statements in this application are true and 
+                                    complete.
+                                </li>
+                            </ol>
+                        </p>
+                        <div class="signature_container">
+                            <label>Applicant's signature</label>
+                            <canvas class="signature_canvas" id="signature_canvas" width="256" height="64"</canvas>>
+                                Use a better browser (and try enabling javascript, if you have it disabled)
+                            </canvas>
+                            <input type="hidden" name="signature" id="signature" value="">
+                            <button id="signature_reset">Reset</button>
+                        </div>
+                    </div>
+                    <div class="release_info_header">
+                        Authorization to release information related to a residential lease applicant
+                    </div>
+                    <div class="release_info_container">
+                        <p>
+                            I, <input type="text" name="release_info_name"> 
+                            (Applicant), have submitted an application to lease a property at 
+                            <input type="text" name="release_info_address">
+                            (address, city, state, zip)
+                        </p>
+                        The landlord, broker, or landlord's representative is:
+                        <div class="landlord_info_container">
+                            <div>Houhua Sun (name)</div>
+                            <div>2703 Wooded Trail Court (address)</div>
+                            <div>Grapevine, Texas 76051 (city, state, zip)</div>
+                            <div>+1 (617)-519-0482 (phone)</div>
+                            <div>eglinton440@gmail.com (email)</div>
+                        </div>
+                        <p>
+                            I give my permission:
+                            <ol>
+                                <li>
+                                    To my current and former employers to release any information about my
+                                    employment history and income history to the above-named person;
+                                </li>
+                                <li>
+                                    to my current and former landlords to release any information about my 
+                                    rental history to the above-named person;
+                                </li>
+                                <li>
+                                    to my current and former mortgage lenders on property that I own or 
+                                    have owned to release any information about my mortgage payment history 
+                                    to the above-named person;
+                                </li>
+                                <li>
+                                    to my bank, savings and loan, or credit union to provide a verification 
+                                    of funds that I have on deposit to the above-named person; and
+                                </li>
+                                <li>
+                                    to the above-named person to obtain a copy of my consumer report (credit
+                                    report) from any consumer reporting agency and to obtain background information about me.
+                                </li>
+                            </ol>
+                        </p>
+                        <div class="note">
+                            Note: Any broker gathering information about an applicant acts under specific 
+                            instructions to verify some or all of the information described in this 
+                            authorization. The broker maintains a privacy policy which is available upon
+                            request.
+                        </div>
+                        <div class="signature_container">
+                            <label>Applicant's signature</label>
+                            <canvas class="signature_canvas" id="signature_canvas2" width="256" height="64">
+                                Use a better browser (and try enabling javascript, if you have it disabled)
+                            </canvas>
+                            <input type="hidden" name="signature2" id="signature2" value="">
+                            <button id="signature_reset2">Reset</button>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="is_send_responses">Send a copy of your responses to your email as provided above?</label>
+                        <select name="is_send_responses" id="is_send_responses">
+                            <option selected disabled hidden>Select an option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <button type="submit">Submit</button>
+                    </div>
+
+                    <div id="status"></div>
+                </div>
+            </form>
+
+            
+        </main>
+
+        <footer>
+            <nav>
+                <a href="privacy.html">Privacy Policy</a> | <a href="contact.html">Contact</a>
+            </nav>
+        </footer>
+
+        <script data-cfasync="false" type="text/javascript" src="form_submission_handler.js"></script>
+        <script data-cfasync="false" type="text/javascript" src="form.js"></script>
+    </body>
+</html>
